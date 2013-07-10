@@ -8,7 +8,7 @@ default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash'
 
 set :user, "casa"
-set :deploy_to, "/home/casa/royalcanin"
+set :deploy_to, "/var/www/royalcanin"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
