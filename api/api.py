@@ -3,31 +3,38 @@
 from flask import * 
 import json
 import hashlib
+import xml.etree.ElementTree as ET
+import weixin
 
 app = Flask(__name__)
 app.debug = True
 
 TOKEN = 'geekernel'
 
-@app.route('/')
-def hello():
-	return "Hello, World!"
-
-@app.route('/weixin/verify')
-def verify():
-	args = request.args
-	signature = args['signature']
-	timestamp = args['timestamp']
-	nonce = args['nonce']
-	echostr = args['echostr']
-	a = (TOKEN, timestamp, nonce)
-	a.sort()
-	sha1 = hashlib.sha1()
-	sha1.update(''.join(a))
-	digest = sha1.digest()
-	#return ' '.join(TOKEN, timestamp, nonce, echostr, digest, signature)
-	if digest == signature:
-		return echostr
+@app.route('/weixin', methods=['GET', 'POST'])
+def weixin_service():
+	if request.method == 'GET':
+		args = request.args
+		signature = args['signature']
+		timestamp = args['timestamp']
+		nonce = args['nonce']
+		echostr = args['echostr']
+		a = sorted([TOKEN, timestamp, nonce])
+		raw = ''.join(a)
+		app.logger.debug(raw)
+		digest = hashlib.sha1(raw).hexdigest()
+		if digest == signature:
+			return echostr
+		else:
+			abort(401)
+	else:
+		data = request.data
+		app.logger.debug(data)
+		msg = weixin.fromstring(data)
+		if msg.msg_type == 'text':
+			response = weixin.TextMessage(msg.to_user, msg.from_user, msg.content).dump()
+			app.logger.debug(response)
+			return response
 
 def main():
 	app.run(host='0.0.0.0', port=80)
