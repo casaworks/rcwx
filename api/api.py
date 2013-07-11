@@ -25,8 +25,9 @@ def verify():
 	sha1 = hashlib.sha1()
 	sha1.update(''.join(a))
 	digest = sha1.digest()
-	return ' '.join(TOKEN, timestamp, nonce, echostr, digest, signature)
-	
+	#return ' '.join(TOKEN, timestamp, nonce, echostr, digest, signature)
+	if digest == signature:
+		return echostr
 
 def main():
 	app.run(host='0.0.0.0', port=80)
