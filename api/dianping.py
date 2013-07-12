@@ -12,7 +12,7 @@ params_map = {}
 params_map['latitude'] = '31.218173'
 params_map['longitude'] = '121.415695'
 params_map['sort'] = '7'
-params_map['category'] = '宠物店'
+params_map['category'] = '宠物'
 
 keys = sorted(params_map.keys())
 params_list = []

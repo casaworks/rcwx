@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+# coding:utf-8
 
 from flask import * 
 import json
@@ -31,7 +32,12 @@ def weixin_service():
 		data = request.data
 		app.logger.debug(data)
 		msg = weixin.fromstring(data)
-		if msg.msg_type == 'text':
+        
+        if msg.msg_type == 'event':
+            if msg.event == 'subscribe':
+                response = weixin.TextMessage(msg.to_user, msg.from_user, u'欢迎关注').dump()
+                return response
+        elif msg.msg_type == 'text':
 			response = weixin.TextMessage(msg.to_user, msg.from_user, msg.content).dump()
 			app.logger.debug(response)
 			return response
