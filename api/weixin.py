@@ -33,7 +33,6 @@ def fromstring(string):
 		msg = EventMessage(from_user, to_user, event, event_key, create_time)
 	else:
 		raise MessageTypeError('can not parse message type %s.' % msg_type)
-	msg.parse_content(xml)
 	return msg
 
 class MessageTypeError(Exception):
