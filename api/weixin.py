@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 import time
 
 def fromstring(string):
-	xml = ET.fromstring(string)	
+	xml = ET.fromstring(string)
 	msg_type = xml.find('MsgType').text
 	from_user = xml.find('FromUserName').text
 	to_user = xml.find('ToUserName').text
@@ -44,15 +44,15 @@ class Message:
 		self.from_user = from_user
 		self.to_user = to_user
 		self.create_time = create_time if create_time else str(int(time.time()))
-
+	
 	def dump_header(self, xml):
 		self.append_element('ToUserName', self.to_user, xml)
 		self.append_element('FromUserName', self.from_user, xml)
 		self.append_element('CreateTime', self.create_time, xml)
 		self.append_element('MsgType', self.msg_type, xml)
-
+	
 	def append_element(self, name, value, xml):
-		e = ET.Element(name)	
+		e = ET.Element(name)
 		e.text = value
 		xml.append(e)
 		return e
@@ -62,7 +62,7 @@ class TextMessage(Message):
 		Message.__init__(self, 'text', from_user, to_user, create_time)
 		self.content = content
 		self.func_flag = func_flag
-
+	
 	def dump(self):
 		xml = ET.Element('xml')
 		self.dump_header(xml)
@@ -103,7 +103,7 @@ class MusicMessage(Message):
 		self.music_url = music_url
 		self.hq_music_url = hq_music_url
 		self.func_flag = func_flag
-
+	
 	def dump(self):
 		xml = ET.Element('xml')
 		self.dump_header(xml)
@@ -121,11 +121,11 @@ class Article():
 		self.url = url
 	
 	def append_element(self, name, value, xml):
-		e = ET.Element(name)	
+		e = ET.Element(name)
 		e.text = value
 		xml.append(e)
 		return e
-
+	
 	def to_element(self):
 		e = ET.Element('item')
 		self.append_element('Title', self.title, e)
@@ -137,15 +137,16 @@ class Article():
 class NewsMessage(Message):
 	def __init__(self, from_user, to_user, articles=None, create_time=None, func_flag=0):
 		Message.__init__(self, 'news', from_user, to_user, create_time)
-		self.articles = articles if articles else [] 
+		self.articles = articles if articles else []
 		self.func_flag = func_flag
 	
-	def append_article(article):
+	def append_article(self, article):
 		self.articles.append(article)
 	
 	def dump(self):
 		xml = ET.Element('xml')
 		self.dump_header(xml)
+		self.append_element('ArticleCount', str(len(self.articles)), xml)
 		articles_element = self.append_element('Articles', None, xml)
 		for article in self.articles:
 			article_element = article.to_element()
