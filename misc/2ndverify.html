@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>产品验证</title>
+    <link href="css/main2.css" type="text/css" rel="stylesheet" />
+
+    <script src="js/jquery-1.5.1.min.js" type="text/javascript" language="javascript"></script>
+
+    <script src="js/main.js" type="text/javascript" language="javascript"></script>
+
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24805763-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+    </script>
+
+    <script language="javascript" type="text/javascript" src="http://tmtest2.admaster.com.cn/sod/admBcnAct2.js"></script>
+
+    <script language="javascript" type="text/javascript">var cmpnId=1188,actInfo=(new Date()).getTime(), weight=1,tagStr=""; admBcnActGen(cmpnId,actInfo,weight,tagStr);</script>
+
+    <script type="text/javascript">
+  var idgJsHost = (("https:" == document.location.protocol) ? "https" : "http");
+  document.write(unescape("%3Cscript src='" + idgJsHost + "://1.allyes.com.cn/idigger.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <script type="text/javascript">
+try {
+  var idgTracker = _alysP.init("idigger","T-000019-12", "");
+  idgTracker._setTrackPath(idgJsHost + '://idigger.allyes.com/main/adftrack');
+  idgTracker._setLinkClick(true);
+  idgTracker._trackPoint();
+} catch(err) {}
+    </script>
+
+    <script type="text/javascript" language="javascript">
+     function reloadcode(){
+        document.getElementById('safecode').src = 'CAPTCHA/FontGif.aspx?' + Math.random();
+     } 
+
+    function validateNext()
+    {
+        var ProcCodePart1 = document.getElementById("ProcCodePart1"); 
+        var ProcCodePart2 = document.getElementById("ProcCodePart2"); 
+        var ProcCodePart3 = document.getElementById("ProcCodePart3"); 
+        var ProcCodePart4 = document.getElementById("ProcCodePart4");  
+        var varTbxCaptcha = document.getElementById("Captcha");
+        var ValidCodeError = document.getElementById("ValidCodeError");
+        //var ProCodeError = document.getElementById("ProCodeError");
+        var strCookie=document.cookie;
+        
+        //ProCodeError.style.display = "none";
+        ValidCodeError.style.display = "none";
+        
+        if(ProcCodePart1.value =="" || ProcCodePart2.value == "" || ProcCodePart3.value == "" || ProcCodePart4.value == "" || ProcCodePart1.value.length != 4 
+            || ProcCodePart2.value.length != 4|| ProcCodePart3.value.length != 4 || ProcCodePart4.value.length != 4 ){
+            ValidCodeError.innerHTML = "抱歉，您输入的产品验证码位置有误，请重新输入！";
+            ValidCodeError.style.display = "block";
+            return false;
+        }
+        if(ProcCodePart1.value.length == 4 && ProcCodePart2.value.length == 4 && ProcCodePart3.value.length == 4 && ProcCodePart4.value.length == 4 ){
+            ValidCodeError.innerHTML = "验证码位置和格式验证通过！";
+        }
+            
+        //将多cookie切割为多个名/值对
+        var arrCookie=strCookie.split("; ");
+        var userId;
+        //遍历cookie数组，处理每个cookie对
+        for(var i=0;i<arrCookie.length;i++)
+        {
+            var arr=arrCookie[i].split("=");
+            //找到名称为userId的cookie，并返回它的值
+            if("checkcode"==arr[0]){
+            userId=arr[1];
+            break;
+            }
+        }
+        if(varTbxCaptcha.value != userId){
+			    reloadcode();
+			    ValidCodeError.innerHTML = "您输入验证码错误，请重新输入！";
+			    ValidCodeError.style.display = "block";
+			    varTbxCaptcha.focus();
+			    return false;
+        }  
+        ValidCodeError.innerHTML = "验证码正确！";     
+        return true;
+    }
+     function VipCodeAlert(obj){
+         $('#popwrap').show(); 
+       $('#lblVipCodeResult').html(obj);
+    }
+    </script>
+
+</head>
+<body>
+    <form name="ctl00" method="post" action="verifyc2.aspx" id="ctl00">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMTE1MTY4NzU1D2QWAmYPZBYEAgYPDxYCHgdWaXNpYmxlaGRkAggPDxYCHwBoZGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgMFCE5leHRTdGVwBQVMb2dpbgUIUmVnaXN0ZXKaeSJXakopm5SIhmBH1SUtJ8BPcw==" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCAL774OqAgLVg/X8BgLYg/X8BgLXg/X8BgLSg/X8BgK8k6GGAgLvz/GACgK3tNX0DikTf6h0NPoTDAU9ctUpW66sA7MC" />
+</div>
+        <div class="ver_box">
+            <table cellpadding="0" cellspacing="0" width="700" align="center">
+                <tr>
+                    <td style="height: 96px" align="left">
+                        <img src="images/ver_logo_.jpg" alt="" /></td>
+                </tr>
+                <tr>
+                    
+                    <td>
+                        <img src="images/ver2c_pic1.jpg" width="700" alt="" usemap="#pct" />
+                        <map name="pct" id="pct">
+                            <area shape="rect" coords="518,31,629,54" href="explain.aspx" />
+                        </map>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <div class="v2c">
+                            <input name="ProcCodePart1" type="text" maxlength="4" id="ProcCodePart1" class="w70" /><input name="ProcCodePart2" type="text" maxlength="4" id="ProcCodePart2" class="w70" /><input name="ProcCodePart3" type="text" maxlength="4" id="ProcCodePart3" class="w70" /><input name="ProcCodePart4" type="text" maxlength="4" id="ProcCodePart4" class="w70" />
+                            
+                            &nbsp;
+                            
+                            
+                            
+                            
+                            
+                            <br />
+                            <br />
+                            验&nbsp;证&nbsp;码 :
+                            <input type="text" class="w140" id="Captcha" />&nbsp;&nbsp;<img src="CAPTCHA/FontGif.aspx"
+                                style="vertical-align: bottom" id="safecode" alt="看不清，点击换一张" /><a href="javascript:reloadcode()"
+                                    class="r1">换一张</a><br />
+                            <br />
+                            <span id="ValidCodeError" style="display: none;">请输入验证码！</span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="ValidDiv" class="v2c2">
+                            <input type="image" name="NextStep" id="NextStep" src="images/v_btn1.gif" onclick="return validateNext();" style="border-width:0px;" />&nbsp;&nbsp;
+                            <input type="image" name="Login" id="Login" src="images/v_btn2.gif" style="border-width:0px;" />&nbsp;&nbsp;
+                            <input type="image" name="Register" id="Register" src="images/v_btn3.gif" style="border-width:0px;" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--新增弹出框-->
+        <div id="popwrap" style="display: none; position: absolute; top: 13%; left: 20%;
+            background-color: White; border-style: solid; border-width: 1px">
+            <div class="popprompt">
+                <img src="images/prompt.gif" border="0" alt="" usemap="#popmaps" />
+                <map name="popmaps" id="popmaps">
+                    <area shape="rect" coords="611,5,634,25" href="javascript:;" onclick="$('#popwrap').hide()" />
+                </map>
+                <table border="0" cellpadding="0" cellspacing="">
+                    <tr>
+                        <td width="637" height="210" align="center" valign="middle">
+                            <label id="lblVipCodeResult">
+                                该VIP Code不存在，若是进行产品验证，只需输入16位防伪码即可！</label></td>
+                    </tr>
+                </table>
+                <div class="tc" style="text-align: center">
+                    <a href="#" onclick="$('#popwrap').hide()">
+                        <img src="images/btn5.gif" alt="" /></a></div>
+                <br />
+            </div>
+        </div>
+    </form>
+    <map name="Map111" id="Map111">
+        <area shape="rect" coords="112,8,141,25" href="info.aspx" />
+        <area shape="rect" coords="147,8,177,24" href="update_info.aspx" />
+    </map>
+</body>
+</html>

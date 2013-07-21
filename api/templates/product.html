@@ -1,0 +1,71 @@
+<!doctype html>
+<meta charset='utf-8'>
+<meta name="viewport" content="width=320, initial-scale=1, minimum-scale=1, maximum-scale=1.0, user-scalable=yes">
+<head>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+</head>
+<body>
+    <div id="content" class="main">
+        <div class="title">{{ product.name }}</div>
+        <div class="for">{{ product.for }}</div>
+        <div class="specs">规格: {{ product.specs|join('/') }} 千克</div>
+        <dl>
+        {% for feature in product.detail.features -%}
+            <dt class="feature-title">{{ feature.title }}</dt>
+            <dd class="feature-desc">{{ feature.desc }}</dd>
+        {% endfor -%}
+        </dl>
+    </div>
+    <div id="taobao">
+        <div id="buy">
+            <div id="text_arrow">
+                购买正品<img id="up_arrow" src="/static/images/up_arrow.png">
+            </div>
+        </div>
+        <div id="items">
+            <ul>
+            {% for taobao_item in product.taobao_items -%}
+            <li>
+                <a href={{ taobao_item.promo_url }}>
+                    <div class='taobao-item'>
+                        <img class="taobao-item-image" src={{ taobao_item.image }}>
+                        <div class="taobao-item-text">
+                            <div class="taobao-item-title">
+                                {{ taobao_item.name }}
+                            </div>
+                            <div class="taobao-item-price">
+                                ￥{{ '%.2f' % taobao_item.price }}
+                            </div>
+                            <div class="taobao-item-seller">
+                                {{ taobao_item.shopkeeper}}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {% endfor -%}
+            </ul>
+        </div>
+        <script type="text/javascript">
+        $("#buy").click(function() {
+            var delta = $(window).height() - $("#buy").height()
+            if ($("#content").is(":visible")) {
+                $("#up_arrow").css('-webkit-transform','rotate(180deg)'); 
+                $("#taobao").animate({"bottom": delta }, 250, function() {
+                    $("#taobao").css({"top": 0, "bottom": ""})
+                    $("#items").show()
+                    $("#content").hide()
+                })
+            } else {
+                $("#up_arrow").css('-webkit-transform','rotate(0deg)'); 
+                $("#items").hide()
+                $("#content").show()
+                $("#taobao").animate({"top": delta }, 250, function() {
+                    $("#taobao").css({"bottom": 0, "top": ""})
+                })
+            }
+        })
+        </script>
+    </div>
+</body>

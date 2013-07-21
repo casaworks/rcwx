@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+<html xmlns:wb="http://open.weibo.com/wb">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>皇家宠物食品</title>
+<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../css/global.css" />
+<link rel="stylesheet" type="text/css" href="../css/product.css" />
+<link rel="stylesheet" type="text/css" href="../css/jquery.jscrollpane.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="../js/lib/DD_belatedPNG.js"></script>
+<script type="text/javascript">
+	DD_belatedPNG.fix('.png');
+</script>
+<![endif]--> 
+<style>.newtw b{margin-top:5px}</style>
+<script type='text/javascript'>
+(function() {
+    var c = document.createElement('script'); 
+    c.type = 'text/javascript';
+    c.async = true;
+    c.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'sitemonitor.cn.miaozhen.com/boot/45434';
+    var h = document.getElementsByTagName('script')[0];
+    h.parentNode.insertBefore(c, h);
+})();
+</script></head>
+<body>
+	<div id="container">
+		<!-- header start -->
+		<div id="header">
+    <div id="top" class="fn_clear">
+        <div id="logo" class="fn_left"><a href="/"><img src="/images/logo.png" class="png" alt="皇家宠物食品"></a></div>
+        <div id="nav" class="fn_left">
+            <ul>
+                <li><a href="/" onclick="headerTrack('homepage-top-homepage')">首页</a></li>
+                <li>|</li>
+                <li><a href="/mapsales/index.php" onclick="headerTrack('salesnet-top-homepage')">查询附近门店</a></li>
+                <li>|</li>
+                <li><a href="http://membership.royal-canin.cn/verify1.aspx " target="_blank" onclick="headerTrack('verify-top-homepage')">产品验证</a></li>
+                <li>|</li>
+                <li><a href="http://membership.royal-canin.cn/club.aspx" target="_blank" onclick="headerTrack('membership-top-homepage')">皇家爱宠荟</a></li>
+                <li>|</li>
+                <li><a href="http://membership.royal-canin.cn:8085/" target="_blank" onclick="headerTrack('New-owner-top-homepage')">皇家新主人计划</a></li>
+                <li>|</li>
+                <li><a href="/dotesTrip/index.php" target="_blank" class="alert" onclick="headerTrack('bus-tour-top-homepage')">皇家爱宠之旅</a></li>
+                <li id="hot_icon"><img src="/images/hot.gif" width="49" height="23"></li>
+            </ul>
+        </div>
+        <div id="search" class="fn_right">
+        <form method="get" action="/products/search.php" onsubmit="if($('#searchInput').val()==''){ alert('请输入关键字'); return false; }">
+        <input type="text" class="search_input png" name="searchInput" id="searchInput" value="输入关键字" onfocus="if(this.value=='输入关键字'){ this.value='';}" onblur="if(this.value==''){ this.value='输入关键字';}" />
+            <input type="submit" class="search_submit png" value="" onclick="headerTrack('Seach-homepage')" />
+        </form>
+        
+        </div>
+    </div>
+
+    <div id="menubar">
+        <div id="menu" class="fn_left">
+            <ul>
+                <li class="story"></li>
+                <li class="text"><a href="#" onclick="headerTrack('story-homepage')">皇家故事</a>
+                    <div class="sub_story sub png">
+                        <div class="subMenu">
+                            <dl>
+                                <dd><a href="/story/index.php" onclick="headerTrack('story-inside-page')">品牌故事</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/mission/" onclick="headerTrack('story-inside-page')">皇家使命</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/kibbe/index.php" target="_blank" onclick="headerTrack('story-inside-page')">颗粒故事</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                 <dd><a href="/food_safety/" target="_blank" onclick="headerTrack('story-inside-page')">食品安全</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </li>
+                <li class="product"></li>
+                <li class="text"><a href="#" onclick="headerTrack('Product-homepage')">产品家族</a>
+                    <div class="sub png">
+                        <div class="subMenu">
+                            <dl>
+                                <dt>犬粮</dt>
+                                <dd><a href="/products/product.php?id=1" onclick="headerTrack('product-breed-dog')">品种犬粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/products/product.php?id=2" onclick="headerTrack('product-X-Small')">迷你犬粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/products/product.php?id=3" onclick="headerTrack('product-Mini')">小型犬粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/products/product.php?id=4" onclick="headerTrack('product-Medium')">中型犬粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/products/product.php?id=5" onclick="headerTrack('product-Maxi')">大型犬粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/products/product.php?id=6" onclick="headerTrack('product-Giant')">巨型犬粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/products/product_detail.php?id=43&typeid=77" onclick="headerTrack('product-FanYuChang')">繁育场专用犬粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/products/select_product.php" onclick="headerTrack('product-Product-Finder')">选择专属产品</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                            </dl>
+                            <dl>
+                                <dt>猫粮</dt>
+                                <dd><a href="/products/product.php?id=20" onclick="headerTrack('product--breed-cat')">品种猫粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/products/product.php?id=21" onclick="headerTrack('product-Nutrition')">营养猫粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/products/product.php?id=22" onclick="headerTrack('product-Function')">功能猫粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/products/select_product.php" onclick="headerTrack('product-Product-Finder')">选择专属产品</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                            </dl>
+                            <dl>
+                                <dt>处方粮</dt>
+                                <dd><a href="/products/product_detail.php?id=61&typeid=40" onclick="headerTrack('product-Prescription-food-dog')">犬处方粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                <dd><a href="/products/product_detail.php?id=74&typeid=41" onclick="headerTrack('product-Prescription-food-cat')">猫处方粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                            </dl> 
+                            <dl>
+                                <dt>湿粮</dt>
+								                                <dd><a href="/products/product_detail.php?id=86&typeid=80" onclick="headerTrack('product-Prescription-food-dog')">幼猫奶糕</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                                                <dd><a href="/products/product_detail.php?id=87&typeid=80" onclick="headerTrack('product-Prescription-food-dog')">幼犬奶糕</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                                                <dd><a href="/products/product_detail.php?id=88&typeid=80" onclick="headerTrack('product-Prescription-food-dog')">猫泌尿道处方粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                                                <dd><a href="/products/product_detail.php?id=89&typeid=80" onclick="headerTrack('product-Prescription-food-dog')">犬肠道处方粮</a><img src="/images/subMenu_arrow.png" class="png" alt="bullet"></dd>
+                                                                
+                            </dl>                            
+                        </div>
+                    </div>
+                </li>
+                <li class="dog"></li>
+                <li class="text"><a href="/knowledges/knowledges_dog.php" onclick="headerTrack('knowledge-dog-homepage')">爱犬学堂</a></li>
+                <li class="cat"></li>
+                <li class="text"><a href="/knowledges/knowledges_cat.php" onclick="headerTrack('knowledge-cat-homepage')">爱猫学堂</a></li>
+            </ul>
+        </div>
+        <div id="member" class="fn_right">
+        	<form target="_blank" method="get" action="http://membership.royal-canin.cn/ThirdPartyLogin.aspx" onsubmit="return checklogin()">
+            <div class="m_title"><img src="/images/login_title.png" alt="皇家爱宠荟" width="149" height="37" border="0" usemap="#MapHeaderReg" class="png" />
+                <map name="MapHeaderReg" id="MapHeaderReg">
+                	<area shape="rect" coords="95,-4,153,45" href="http://membership.royal-canin.cn/reg.aspx" target="_blank" onclick="headerTrack('register-homepage')" />
+                </map>
+            </div>
+            <div class="m_login png">
+                <label>用户名：</label>
+                <input type="text" class="m_text" name="Name" id="loginname" />
+                
+            </div>
+            <div class="m_login m_pass png">
+                <label>密&nbsp;&nbsp;&nbsp;码：</label>
+                <input type="password" class="m_text" name="Pwd" id="loginpwd" />
+                <input type="hidden" name="Key" value="arvatoRC" />
+                <input type="submit" value="" class="m_go png" onclick="headerTrack('go-homepage')" />
+            </div>
+            </form><script>function checklogin(){
+				if($('#loginname').val()==''){
+					alert('请输入用户名');
+					return false;	
+				}
+				if($('#loginpwd').val()==''){
+					alert('请输入密码');
+					return false;	
+				}
+			}</script>
+        </div>
+    </div>
+</div>
+
+<script>
+function headerTrack(track){
+	CClicki[45434]._trackEvent({
+		type: 1,
+		labels: [
+			{"按钮名称":track}
+		],
+		values: [
+			{"点击数":1}
+		]
+	});
+}
+</script>
+		<!-- header end -->
+		<!-- main start -->
+		<div id="main">
+			<div id="content" class="fn_left">
+				<div class="position"><a href="/">首页</a> &gt; <a href="product.php">产品家族</a></div>
+				<div class="productContent">
+					<div class="shareTo">分享到：
+						<a class="douban" href="javascript:void(0);"><img src="../images/share_douban.jpg" alt /></a>
+						<a class="sina" href="javascript:void(0);"><img src="../images/share_sina.jpg" alt /></a>
+						<a class="kaixin" href="javascript:void(0);"><img src="../images/share_kaixin.jpg" alt /></a>
+						<a class="renren" href="javascript:void(0);"><img src="../images/share_renren.jpg" alt /></a>
+					</div>
+
+					<div class="p_summary fn_clear">
+                    
+                    
+                    	<div class="summary_pic fn_left" >
+							<img class="productPic" style="border:none" id="currentPic" width="224" src="/uploadfile/products/20130203075538.jpg" alt="口腔护理成猫粮" />
+							<!--<img class="productPic" onClick="switchPic()" id="smallPic" width="40" height="34" src="/uploadfile/products/20130203075546.jpg" alt="" />-->
+						</div>
+
+						<div class="summary_detail fn_left">
+							<p class="d_title">
+								<span>口腔护理成猫粮</span><span class="search_shop"><a href="../mapsales/index.php"><img src="../images/search_shop.gif" width="101" height="18" align="absmiddle"></a></span><br /><br />
+								规格：0.4/1.5/3.5/8Kg                               <label style="float:right">&nbsp;&nbsp;&nbsp;&nbsp;适合12月龄以上成猫。</label>
+							</p>
+                          
+							<p class="newtw"><b>帮助减少牙结石生成</b><br />
+特殊的颗粒形状和质地在进食时起到机械摩擦作用帮助降低牙菌斑的形成 。</p>
+						</div>
+					</div>
+
+					<div class="p_list fn_clear">
+						<div class="pl_title"><img src="../images/product_detail.jpg" alt="" /></div>
+						<div class="pl_detail_bg"><div class="pl_detail">
+							<p><strong>帮助减少牙结石生成</strong><br />
+特殊的颗粒形状和质地在进食时起到机械摩擦作用帮助降低牙菌斑的形成 。</p>                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="sidebar" class="fn_right">
+				
+<div class="productMenu">
+    <dl class="dog">
+        <dt><a href="#">犬粮<span class="selected"></span></a></dt>
+        <dd><a href="product.php?id=1" id="sb1">品种犬粮</a>
+            <ul class="fn_clear">
+                <li><a id="a1" href="product_detail.php?id=1&typeid=1">贵宾幼犬粮</a></li><li><a id="a6" href="product_detail.php?id=6&typeid=1">贵宾成犬粮</a></li><li><a id="a2" href="product_detail.php?id=2&typeid=1">吉娃娃幼犬粮</a></li><li><a id="a8" href="product_detail.php?id=8&typeid=1">吉娃娃成犬粮</a></li><li><a id="a3" href="product_detail.php?id=3&typeid=1">约克夏幼犬粮</a></li><li><a id="a9" href="product_detail.php?id=9&typeid=1">约克夏成犬粮</a></li><li><a id="a7" href="product_detail.php?id=7&typeid=1">迷你雪纳瑞成犬粮</a></li><li><a id="a4" href="product_detail.php?id=4&typeid=1">西高地成犬粮</a></li><li><a id="a5" href="product_detail.php?id=5&typeid=1">可卡犬成犬粮</a></li><li><a id="a19" href="product_detail.php?id=19&typeid=1">德牧幼犬粮</a></li><li><a id="a20" href="product_detail.php?id=20&typeid=1">德牧成犬粮</a></li><li><a id="a15" href="product_detail.php?id=15&typeid=1">拉布拉多幼犬粮</a></li><li><a id="a16" href="product_detail.php?id=16&typeid=1">拉布拉多成犬粮</a></li><li><a id="a17" href="product_detail.php?id=17&typeid=1">金毛犬幼犬粮</a></li><li><a id="a18" href="product_detail.php?id=18&typeid=1">金毛犬成犬粮</a></li><li><a id="a12" href="product_detail.php?id=12&typeid=1">藏獒第一生长期幼犬粮</a></li><li><a id="a13" href="product_detail.php?id=13&typeid=1">藏獒第二生长期幼犬粮</a></li><li><a id="a14" href="product_detail.php?id=14&typeid=1">藏獒成犬粮</a></li>            </ul>
+        </dd>
+        <dd><a href="product.php?id=2" id="sb2">迷你犬粮系列</a>
+            <ul class="fn_clear">
+                <li><a id="a21" href="product_detail.php?id=21&typeid=2">迷你犬幼犬粮</a></li><li><a id="a22" href="product_detail.php?id=22&typeid=2">迷你犬成犬粮</a></li><li><a id="a23" href="product_detail.php?id=23&typeid=2">迷你犬8岁以上老年犬粮</a></li>            </ul>
+        </dd>
+        <dd><a href="product.php?id=3" id="sb3">小型犬粮系列</a>
+            <ul class="fn_clear">
+                <li><a id="a24" href="product_detail.php?id=24&typeid=3">小型犬奶糕</a></li><li><a id="a25" href="product_detail.php?id=25&typeid=3">小型犬幼犬粮</a></li><li><a id="a26" href="product_detail.php?id=26&typeid=3">小型犬成犬粮</a></li><li><a id="a27" href="product_detail.php?id=27&typeid=3">小型犬8岁以上老年犬粮</a></li><li><a id="a28" href="product_detail.php?id=28&typeid=3">小型犬皮肤舒护成犬粮</a></li><li><a id="a29" href="product_detail.php?id=29&typeid=3">室内小型犬幼犬粮</a></li><li><a id="a30" href="product_detail.php?id=30&typeid=3">室内小型犬成犬粮</a></li><li><a id="a31" href="product_detail.php?id=31&typeid=3">室内小型犬老年犬粮</a></li>            </ul>
+        </dd>
+        <dd><a href="product.php?id=4" id="sb4">中型犬粮系列</a>
+            <ul class="fn_clear">
+                <li><a id="a32" href="product_detail.php?id=32&typeid=4">中型犬奶糕</a></li><li><a id="a33" href="product_detail.php?id=33&typeid=4">中型犬幼犬粮</a></li><li><a id="a34" href="product_detail.php?id=34&typeid=4">中型犬成犬粮</a></li><li><a id="a35" href="product_detail.php?id=35&typeid=4">中型犬皮肤舒护犬粮</a></li>            </ul>
+        </dd>
+        <dd><a href="product.php?id=5" id="sb5">大型犬粮系列</a>
+            <ul class="fn_clear">
+                <li><a id="a36" href="product_detail.php?id=36&typeid=5">大型犬奶糕</a></li><li><a id="a37" href="product_detail.php?id=37&typeid=5">大型犬幼犬粮</a></li><li><a id="a38" href="product_detail.php?id=38&typeid=5">大型犬成犬粮</a></li><li><a id="a39" href="product_detail.php?id=39&typeid=5">大型犬皮肤舒护犬粮</a></li>            </ul>
+        </dd>
+        <dd><a href="product.php?id=6" id="sb6">巨型犬粮系列</a>
+            <ul class="fn_clear">
+                <li><a id="a40" href="product_detail.php?id=40&typeid=6">巨型犬奶糕</a></li><li><a id="a41" href="product_detail.php?id=41&typeid=6">巨型犬第一生长期幼犬粮</a></li><li><a id="a42" href="product_detail.php?id=42&typeid=6">巨型犬第二生长期幼犬粮</a></li>            </ul>
+        </dd>
+         <dd><a href="#" id="sb7">繁育场专用犬粮</a>
+            <ul class="fn_clear">
+                <li><a id="a43" href="product_detail.php?id=43&typeid=7">高能量4800成犬粮</a></li><li><a id="a44" href="product_detail.php?id=44&typeid=7">轻胎期母犬粮</a></li>            </ul>
+        </dd>
+    </dl>
+    
+    <dl class="cat">
+        <dt><a href="#">猫粮</a><span class="selected"></span></dt>
+         <dd><a href="product.php?id=20" id="sb20">品种猫粮</a>
+            <ul class="fn_clear">
+                <li><a id="a46" href="product_detail.php?id=46&typeid=20">波斯猫幼猫粮</a></li><li><a id="a47" href="product_detail.php?id=47&typeid=20">波斯猫成猫粮</a></li><li><a id="a48" href="product_detail.php?id=48&typeid=20">英国短毛猫成猫粮</a></li>            </ul>
+        </dd>
+         <dd><a href="product.php?id=21" id="sb21">营养猫粮</a>
+            <ul class="fn_clear">
+                <li><a id="a49" href="product_detail.php?id=49&typeid=21">幼猫猫粮（1-4月龄）</a></li><li><a id="a50" href="product_detail.php?id=50&typeid=21">幼猫猫粮（12月龄以下）</a></li><li><a id="a51" href="product_detail.php?id=51&typeid=21">室内成猫粮</a></li><li><a id="a52" href="product_detail.php?id=52&typeid=21">理想体态成猫粮</a></li><li><a id="a53" href="product_detail.php?id=53&typeid=21">全能优选成猫粮极佳口感型</a></li><li><a id="a54" href="product_detail.php?id=54&typeid=21">全能优选成猫粮肠道舒适型</a></li><li><a id="a55" href="product_detail.php?id=55&typeid=21">全能优选成猫粮天然香味型</a></li><li><a id="a56" href="product_detail.php?id=56&typeid=21">10岁以上老年猫粮</a></li>            </ul>
+        </dd>
+         <dd><a href="product.php?id=22" id="sb22">功能猫粮</a>
+            <ul class="fn_clear">
+                <li><a id="a57" href="product_detail.php?id=57&typeid=22">减肥成猫粮</a></li><li><a id="a58" href="product_detail.php?id=58&typeid=22">去毛球成猫粮</a></li><li><a id="a59" href="product_detail.php?id=59&typeid=22">美毛成猫粮</a></li><li><a id="a60" href="product_detail.php?id=60&typeid=22">口腔护理成猫粮</a></li>            </ul>
+        </dd>
+    </dl>
+
+	<dl class="prescribe">
+        <dt><a href="#">处方粮</a><span class="selected"></span></dt>
+        <dd><a href="#">犬处方粮</a>
+            <ul class="fn_clear">
+                <li><a id="a63" href="product_detail.php?id=63&typeid=40">犬肥胖症处方粮</a></li><li><a id="a83" href="product_detail.php?id=83&typeid=40">犬减肥Ⅱ期处方粮</a></li><li><a id="a85" href="product_detail.php?id=85&typeid=40">犬糖尿病处方粮</a></li><li><a id="a64" href="product_detail.php?id=64&typeid=40">犬低过敏性处方粮</a></li><li><a id="a72" href="product_detail.php?id=72&typeid=40">犬皮肤疾病处方粮</a></li><li><a id="a84" href="product_detail.php?id=84&typeid=40">犬皮肤瘙痒处方粮</a></li><li><a id="a62" href="product_detail.php?id=62&typeid=40">幼犬肠道处方粮</a></li><li><a id="a68" href="product_detail.php?id=68&typeid=40">犬肠道处方粮</a></li><li><a id="a73" href="product_detail.php?id=73&typeid=40">犬低脂易消化处方粮</a></li><li><a id="a67" href="product_detail.php?id=67&typeid=40">犬肝脏处方粮</a></li><li><a id="a69" href="product_detail.php?id=69&typeid=40">犬肾脏处方粮</a></li><li><a id="a65" href="product_detail.php?id=65&typeid=40">犬泌尿道处方粮</a></li><li><a id="a66" href="product_detail.php?id=66&typeid=40">犬心脏病处方粮</a></li><li><a id="a71" href="product_detail.php?id=71&typeid=40">大型犬关节保护处方粮</a></li><li><a id="a70" href="product_detail.php?id=70&typeid=40">犬维持关节灵活性处方粮</a></li><li><a id="a61" href="product_detail.php?id=61&typeid=40">绝育小型成犬处方粮</a></li><li><a id="a91" href="product_detail.php?id=91&typeid=40">犬肠道处方粮（湿粮）</a></li>            </ul>
+        </dd>
+        <dd><a href="#">猫处方粮</a>
+            <ul class="fn_clear">
+                <li><a id="a78" href="product_detail.php?id=78&typeid=41">猫肥胖症处方粮</a></li><li><a id="a81" href="product_detail.php?id=81&typeid=41">猫糖尿病处方粮</a></li><li><a id="a79" href="product_detail.php?id=79&typeid=41">猫低过敏性处方粮</a></li><li><a id="a76" href="product_detail.php?id=76&typeid=41">猫肠道处方粮</a></li><li><a id="a82" href="product_detail.php?id=82&typeid=41">猫肝脏处方粮</a></li><li><a id="a80" href="product_detail.php?id=80&typeid=41">猫肾脏处方粮</a></li><li><a id="a77" href="product_detail.php?id=77&typeid=41">猫泌尿道处方粮</a></li><li><a id="a74" href="product_detail.php?id=74&typeid=41">绝育公猫处方粮</a></li><li><a id="a75" href="product_detail.php?id=75&typeid=41">绝育母猫处方粮</a></li><li><a id="a90" href="product_detail.php?id=90&typeid=41">猫泌尿道处方粮（湿粮）</a></li>            </ul>
+        </dd>
+    </dl>
+    
+    <dl class="prescribe">
+        <dt><a href="wetfood.php" id="sss">湿粮</a><span class="selected"></span></dt>
+                <dd><a id="a86" href="product_detail.php?id=86&typeid=80">幼猫奶糕</a></dd>
+                <dd><a id="a87" href="product_detail.php?id=87&typeid=80">幼犬奶糕</a></dd>
+                <dd><a id="a88" href="product_detail.php?id=88&typeid=80">猫泌尿道处方粮</a></dd>
+                <dd><a id="a89" href="product_detail.php?id=89&typeid=80">犬肠道处方粮</a></dd>
+            </dl>
+    
+    <dl class="prescribe">
+        <dt><a href="../products/select_product.php">选择专属产品</a><span class="selected"></span></dt>
+    </dl>
+    <!--<div class="menu_button">
+        <a href="../mapsales/network.php"><img src="../images/select_product.png" class="png" alt="" /></a>
+        <a href="../mapsales/network.php"><img src="../images/net_sales.png" class="png" alt="" /></a>
+    </div>-->
+</div>		
+			</div>
+		</div>
+		<!-- main end -->
+		<!-- footer start -->
+		<div id="footer">
+    <div id="footer_content" class="fn_left">
+        <div class="weibo fn_left png">
+            <div class="weibo_name fn_left">皇家宠物食品官方微博</div>
+            <div class="add fn_left"><wb:follow-button uid="2164681984" type="red_1" width="67" height="24" ></wb:follow-button></div>
+        </div>
+        <div class="shareSNS fn_left">
+            <a href="javascript:;" class="kaixin png"></a>
+            <a href="javascript:;" class="douban png"></a>
+            <a href="javascript:;" class="sina png"></a>
+            <a href="javascript:;" class="renren png"></a>
+        </div>
+        <div class="copyright fn_right">
+            <ul>
+                <li><a href="/declaration/"  class="alert" onclick="footerTrack('legal-statement-homepage')">法律声明</a></li>
+                <li>|</li>
+                <li><a href="/secrets/" onclick="footerTrack('privacy-policy-homepage')">隐私条款</a></li>
+                <li>|</li>
+                <li><a href="/global/" onclick="footerTrack('global-homepage')">全球网站</a></li>
+            	<li>|</li>
+                <li><a href="/sitemap/" onclick="footerTrack('website-map-homepage')">网站地图</a></li>
+                <li>&nbsp;</li>
+                <li><a href="http://www.miibeian.gov.cn" target="_blank" onclick="footerTrack('ICP-homepage')">沪ICP备 08000779</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="footer_side" class="fn_right"></div>
+   
+</div>
+<script>
+function footerTrack(track){
+	CClicki[45434]._trackEvent({
+		type: 1,
+		labels: [
+			{"按钮名称":track}
+		],
+		values: [
+			{"点击数":1}
+		]
+	});
+}
+</script>		<!-- footer end -->
+		<!-- pop start -->
+		<div id="pop">
+        <div id="close_button" class="close"><img src="/images/close_button.jpg" alt="关闭" /></div>
+        <div class="popList">
+            <div class="popTitle"><img src="/images/pop_title.png" alt="您爱宠的专属顾问" width="92" height="36" class="png"></div>
+            <div class="popDetail">
+                <a href="/contact/consulting.php" target="_blank" onclick="popTrack('live-chat-homepage')"><img src="/images/online_consultant.png" alt="在线咨询"></a>
+                <img src="/images/hot-telephone.png" alt="免费咨询热线：400 688 1527">
+                <img src="/images/service_time.png" alt="服务时间 09：00-17：00">
+            </div>
+            
+        </div>
+    </div>
+<script>
+function popTrack(track){
+	CClicki[45434]._trackEvent({
+		type: 1,
+		labels: [
+			{"按钮名称":track}
+		],
+		values: [
+			{"点击数":1}
+		]
+	});
+}
+</script>		<!-- pop end -->
+	</div>
+	<script type="text/javascript" src="../js/lib/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/lib/jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="../js/lib/jquery.jscrollpane.min.js"></script>
+	<script type="text/javascript" src="../js/main.js"></script>
+	<script type="text/javascript">
+			jQuery(document).ready(function() {
+			
+			//jScrollPane setting
+			$('.pl_detail').jScrollPane({
+				verticalDragMinHeight: 16,
+    			verticalDragMaxHeight: 16,
+    			autoReinitialise: true
+			});
+		});
+		</script>
+	<script type="text/javascript">
+		setSelectById("60");
+	</script>
+	<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

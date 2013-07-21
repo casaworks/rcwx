@@ -1,130 +1,70 @@
-#! /usr/bin/env python
 # coding:utf-8
 
-from flask import * 
-import json
-import hashlib
-import xml.etree.ElementTree as ET
-import weixin
-import re
-import urllib
-import urllib2
-import dianping
+from flask import Flask, app
+from flask import render_template
+from weixin.app import App
+import pymongo
+import redis
 
 app = Flask(__name__)
 app.debug = True
 
-TOKEN = 'geekernel'
+wx_host = 'http://api.royalcanin.dev.geekernel.com' if app.debug else 'http://api.royalcanin.geekernel.com'
+wx_token = 'geekernel'
 
-GUIDE_MESSAGE = u'''欢迎关注皇家宠物食品！
-输入序号:
-1: 产品选购向导
-2: 产品真伪验证
-3: 周边的宠物店/医院
-0: 查看帮助'''
-
-HOST = 'http://58.246.240.122'
+mongo = pymongo.MongoClient()
+db = mongo.royalcanin
+redis_db = redis.Redis()
+weixin_app = App(wx_host, wx_token, db, redis_db)
 
 @app.route('/weixin', methods=['GET', 'POST'])
 def weixin_service():
-    if request.method == 'GET':
-        args = request.args
-        signature = args['signature']
-        timestamp = args['timestamp']
-        nonce = args['nonce']
-        echostr = args['echostr']
-        a = sorted([TOKEN, timestamp, nonce])
-        raw = ''.join(a)
-        app.logger.debug(raw)
-        digest = hashlib.sha1(raw).hexdigest()
-        if digest == signature:
-            return echostr
-        else:
-            abort(401)
-    else:
-        data = request.data
-        app.logger.debug(data)
-        msg = weixin.fromstring(data)
-        
-        if msg.msg_type == 'event':
-            if msg.event == 'subscribe':
-                response = weixin.TextMessage(msg.to_user, msg.from_user, GUIDE_MESSAGE)
-                return response.dump()
-        elif msg.msg_type == 'text':
-            content = msg.content.strip()
-            if content == '2':
-                response = weixin.NewsMessage(msg.to_user, msg.from_user)
-                pic_url = '%s%s' % (HOST, url_for('static', filename='product_verify.png'))
-                print pic_url
-                article = weixin.Article(u'产品验证', u'揭开产品包装上的标签，发送标签下16位验证码', pic_url, None)
-                response.append_article(article)
-                return response.dump()
-            if content == '0':
-                response = weixin.TextMessage(msg.to_user, msg.from_user, GUIDE_MESSAGE)
-                return response.dump()
-            pattern = re.compile(r'(\d{4})\s*(\d{4})\s*(\d{4})\s*(\d{4})\s*')
-            match = pattern.match(content)
-            if match:
-                response = respond_to_validation(msg, match.groups())
-                return response.dump()
-        elif msg.msg_type == 'location':
-            response = respond_to_location(msg)
-            #print response.dump()
-            return response.dump()
-
-def get_viewstate_eventvalidation(content):
-    return re.findall(r'value="([^"]+)"', content)
-
-def get_verified_url(code):
-    return 'http://membership.royal-canin.cn/verifyc3_%d.aspx' % code
-
-def get_verified_text(url):
-    print url
-    if url == get_verified_url(1):
-        return u'您所查询的验证码之前已验证且使用，如果此次验证并非您本人操作，请致电400-688-1527进行咨询。'
-    elif url == get_verified_url(2):
-        return u'恭喜您，该产品为正品！'
-    else:
-        return u'很遗憾，该产品无法通过验证，请检查验证码是否输入错误。' 
-
-def respond_to_validation(msg, codes):
-    url = 'http://membership.royal-canin.cn/verifyc2.aspx'
-
-    get_content = urllib2.urlopen(url).read()
-    viewstate_eventvalidation = get_viewstate_eventvalidation(get_content)
-
-    post_values = {}
-    post_values['ProcCodePart1'] = codes[0]
-    post_values['ProcCodePart2'] = codes[1]
-    post_values['ProcCodePart3'] = codes[2]
-    post_values['ProcCodePart4'] = codes[3]
-    post_values['__VIEWSTATE'] = viewstate_eventvalidation[0] 
-    post_values['__EVENTVALIDATION'] = viewstate_eventvalidation[1]
-    post_values['NextStep.x'] = 0
-    post_values['NextStep.y'] = 0
-    post_data = urllib.urlencode(post_values)       
-    request = urllib2.Request(url, post_data)
-    response = urllib2.urlopen(request)
-    status = response.getcode()
-    #html = response.read();
-    verified_message = get_verified_text(response.geturl())
-    return weixin.TextMessage(msg.to_user, msg.from_user, verified_message)
-
-def respond_to_location(msg):
-    lat = msg.location_x
-    lng = msg.location_y
-    shops = dianping.get_nearby_shops(lat, lng)
+    return weixin_app.serve(app, 'geekernel')
     
-    if not shops:
-        return weixin.TextMessage(msg.to_user, msg.from_user, u'呃...附近没有宠物店和宠物医院。')
-    else:
-        news = weixin.NewsMessage(msg.to_user, msg.from_user)
-        articles = []
-        for shop in shops:
-            title = u'%s\n%.1f分  %d点评  %d米' % (shop['name'], shop['avg_rating'], shop['review_count'], shop['distance'])
-            article = weixin.Article(title, None, shop['s_photo_url'], shop['business_url'])
-            news.append_article(article)
-        return news
+@app.route('/catalog')
+def show_catalog():
+    cat_products = db.products.find({"$or": [{"cid": {"$in": ['20', '21', '22']}}, {"id": '86'}]})
+    dog_products = db.products.find({"$or": [{"cid": {"$in": ['1', '2', '3', '4', '5', '6', '7']}}, {"id": '87'}]})
+    cat_medi_products = db.products.find({"cid": '41'})
+    dog_medi_products = db.products.find({"cid": '40'})
+    categories = [
+        {
+            "name": u'猫主粮',
+            "products": cat_products
+        },
+        {
+            "name": u'犬主粮',
+            "products": dog_products
+        },
+        {
+            "name": u'猫处方粮',
+            "products": cat_medi_products
+        },
+        {
+            "name": u'犬处方粮',
+            "products": dog_medi_products
+        }
+    ]
+    return render_template('catalog.html', categories=categories)
+    
+@app.route('/product/<product_id>')
+def show_product(product_id):
+    product_ids = product_id.split(',')
+    if len(product_ids) == 1:
+        product = db.products.find_one({ "id": product_ids[0] })
+        if product:
+            taobao_items = db.taobao_items.find({"name": {"$regex": product['name']}})
+            product['taobao_items'] = taobao_items
+            return render_template('product.html', product=product)
+        else:
+            abort(404)
+    elif len(product_ids) > 1:
+        products = []
+        for product_id in product_ids:
+            product = db.products.find_one({"id": product_id })
+            if product:
+                products.append(product)
+        return render_template('products.html', products=products)
 
 def main():
     app.run(host='0.0.0.0', port=80)

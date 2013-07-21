@@ -1,0 +1,34 @@
+<!doctype html>
+<meta charset='utf-8'>
+<meta name="viewport" content="width=320, initial-scale=1, minimum-scale=1, maximum-scale=1.0, user-scalable=yes">
+<head>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+</head>
+<body>
+    <div id="navibar"></div>
+    <ul id="main">
+        {% for category in categories -%}
+            <li> 
+                <a name={{ loop.index }} />
+                <div class="category-title">
+                    {{ category.name }}
+                </div>
+            </li>
+            {% for product in category.products -%}
+            <li class="product">
+                <a href= "/product/{{ product.id }}">
+                    <div class="li-item">
+                        <img class="li-image" src={{ "/static/images/%s" % product.image }}>
+                        <div class="li-summary">
+                            <div class="li-title">
+                                {{ product.name }}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {% endfor -%}
+        {% endfor -%}
+    </ul>
+</body>
