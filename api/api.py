@@ -7,7 +7,7 @@ import pymongo
 import redis
 
 app = Flask(__name__)
-app.debug = True
+app.debug = False
 
 wx_host = 'http://api.royalcanin.dev.geekernel.com' if app.debug else 'http://api.royalcanin.geekernel.com'
 wx_token = 'geekernel'

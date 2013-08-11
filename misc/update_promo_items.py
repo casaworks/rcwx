@@ -5,11 +5,13 @@ import cookielib
 import urllib2
 import urllib
 import re
-import codecs
 import os
-import json
 from lxml import etree
 from lxml.html.soupparser import fromstring
+import mongotools
+import pymongo
+import codecs
+import json
 
 def response_encoding(response):
     content_type = response.info().getheader('Content-Type')
@@ -114,10 +116,15 @@ def parse_campaign(opener, campaign_id, omid, shopkeeper_id, shop_type):
 def main():
     opener = login('royalcanin@geekernel.com', 'cuijie1984', 'f7c5b7d9cf9e77ccdb580f3b51fbab87')    
     items = parse_campaign(opener, '0', '1728261286', '44627268', 'tmall')
-    # items = parse_campaign(opener, '0', '44530690', '10173658', 'taobao')
+    
+    print 'dump items to promo_items.json'
     out = os.path.join(os.path.dirname(__file__), 'promo_items.json')
     with codecs.open(out, 'w', encoding='utf-8') as fp:
         json.dump(items, fp, ensure_ascii=False, indent=4, separators=(',', ': '))
+        
+    db = pymongo.MongoClient().royalcanin
+    print 'dump items to mongodb'
+    mongotools.update_collection(db, 'taobao_items', items)
      
 if __name__ == '__main__':
     main()

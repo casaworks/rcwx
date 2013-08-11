@@ -9,6 +9,8 @@ import os
 import codecs
 import re
 import hashlib
+import pymongo
+import mongotools
 
 base_dir = os.path.dirname(__file__)
 
@@ -104,8 +106,14 @@ def main():
         parts = line.strip().split(':')
         product = parse_product(parts[0], parts[1], parts[2])
         products.append(product)
+        
+    print 'dump items to data.json'
     with codecs.open(os.path.join(base_dir, 'data.json'), 'w', encoding='utf8') as fp:
         json.dump(products, fp, ensure_ascii=False, indent=4, separators=(',', ': '))
+        
+    print 'dump items to mongodb'
+    db = pymongo.MongoClient().royalcanin
+    mongotools.update_collection(db, 'products', products)
 
 if __name__ == '__main__':
     main()
