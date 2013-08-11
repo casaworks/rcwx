@@ -242,7 +242,7 @@ class QueryNearbyShopsCommand(Command):
             return TextMessage(msg.to_user, msg.from_user, u'呃...附近没有宠物店和宠物医院。')
         else:
             news = NewsMessage(msg.to_user, msg.from_user)
-            title = Article(u'周边的宠物店/医院', None, self.app.url_for_image('dplogo.png'))
+            title = Article(u'周边的宠物店/医院', None, self.app.url_for_image('nearby_banner.jpg'))
             news.append_article(title)
             for shop in shops:
                 rating = shop['avg_rating']
@@ -276,13 +276,12 @@ class CatalogCommand(Command):
 class RootCommand(SelectionCommand):
     def __init__(self, app):
         prompt = u'''\ue32f 回复产品关键字搜索产品，如“贵宾”，“小型犬 成犬”
-\ue32f 回复16位验证码认证产品真伪
 \ue32f 回复当前位置搜索周边宠物店/医院
 \ue32f 回复数字序号进入其它功能'''
         SelectionCommand.__init__(self, app, None, prompt)
         self.append_command(CatalogCommand(self.app))
         self.append_command(ProductSelectionCommand(self.app))
-        self.append_command(VerificationCommand(self.app))
+        # self.append_command(VerificationCommand(self.app))
         
     def make_prompt_text(self, key, text):
         return ' %s  %s' % (key, text)
