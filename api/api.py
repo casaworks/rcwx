@@ -1,6 +1,6 @@
 # coding:utf-8
 
-from flask import Flask, app
+from flask import *
 from flask import render_template
 from weixin.app import App
 import pymongo
@@ -47,8 +47,12 @@ def show_catalog():
     ]
     return render_template('catalog.html', categories=categories)
     
+@app.route('/product')
 @app.route('/product/<product_id>')
-def show_product(product_id):
+def show_product(product_id=None):
+    if not product_id:
+        products = db.products.find()
+        return render_template('products.html', products=products)
     product_ids = product_id.split(',')
     if len(product_ids) == 1:
         product = db.products.find_one({ "id": product_ids[0] })
@@ -58,7 +62,7 @@ def show_product(product_id):
             return render_template('product.html', product=product)
         else:
             abort(404)
-    elif len(product_ids) > 1:
+    else:
         products = []
         for product_id in product_ids:
             product = db.products.find_one({"id": product_id })
