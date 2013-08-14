@@ -272,16 +272,42 @@ class CatalogCommand(Command):
         response.append_article(Article(u'犬处方粮', None, self.app.url_for_image('dog_medi.png'), self.catalog_url('4')))
         self.app.quit2rootcmd(msg.from_user)
         return response
+        
+class VideoCommand(Command):
+    def __init__(self, app):
+        Command.__init__(self, app, u'皇家视频集锦')
+        
+    def video_url(self, vid=None):
+        if not vid:
+            return '%s/video' % self.app.host
+        else:
+            return '%s/video/%s' % (self.app.host, vid)
+        
+    def prompt_help(self, msg):
+        response = NewsMessage(msg.to_user, msg.from_user)
+        response.append_article(Article(u'皇家视频集锦', None, self.app.url_for_image('video_banner.jpg'), self.video_url()))
+        for i, video in enumerate(self.app.videos.find()):
+            if i < 8:
+                response.append_article(Article(video['title'], None, video['image'], self.video_url(video['id'])))
+            elif i == 8:
+                if len(self.app.videos) == 9:
+                    response.append_article(Article(video['title'], None, video['image'], self.video_url(video['id'])))
+                else:
+                    response.append_article(Article(u'更多', None, None, self.video_url()))
+                break
+        return response
             
 class RootCommand(SelectionCommand):
     def __init__(self, app):
         prompt = u'''\ue32f 回复产品关键字搜索产品，如“贵宾”，“小型犬 成犬”
+\ue32f 回复16位验证码认证产品真伪
 \ue32f 回复当前位置搜索周边宠物店/医院
 \ue32f 回复数字序号进入其它功能'''
         SelectionCommand.__init__(self, app, None, prompt)
+        self.append_command(VideoCommand(self.app))
         self.append_command(CatalogCommand(self.app))
         self.append_command(ProductSelectionCommand(self.app))
-        # self.append_command(VerificationCommand(self.app))
+        self.append_command(VerificationCommand(self.app))
         
     def make_prompt_text(self, key, text):
         return ' %s  %s' % (key, text)
@@ -318,6 +344,7 @@ class App:
         self.rootcmd = None
         self.db = db
         self.products = self.db.products
+        self.videos = self.db.videos
         self.redis_db = redis_db
         
     def url_for_image(self, url):

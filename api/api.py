@@ -7,7 +7,7 @@ import pymongo
 import redis
 
 app = Flask(__name__)
-app.debug = False
+app.debug = True
 
 wx_host = 'http://api.royalcanin.dev.geekernel.com' if app.debug else 'http://api.royalcanin.geekernel.com'
 wx_token = 'geekernel'
@@ -69,6 +69,12 @@ def show_product(product_id=None):
             if product:
                 products.append(product)
         return render_template('products.html', products=products)
+        
+@app.route('/video')
+@app.route('/video/<video_id>')
+def show_videos(video_id=None):
+    videos = db.videos.find({ 'id': video_id }) if video_id else db.videos.find()
+    return render_template('video.html', videos=videos)
 
 def main():
     app.run(host='0.0.0.0', port=80)
