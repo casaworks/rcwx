@@ -284,6 +284,7 @@ class VideoCommand(Command):
             return '%s/video/%s' % (self.app.host, vid)
         
     def prompt_help(self, msg):
+        self.app.quit2rootcmd(msg.from_user)
         response = NewsMessage(msg.to_user, msg.from_user)
         response.append_article(Article(u'皇家视频集锦', None, self.app.url_for_image('video_banner.jpg'), self.video_url()))
         for i, video in enumerate(self.app.videos.find()):
