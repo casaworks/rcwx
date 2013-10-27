@@ -18,8 +18,8 @@ def update_collection(db, collection_name, values):
 
 def main():
     db = pymongo.MongoClient().royalcanin
-    add_collection(db, 'products', 'data.json')
-    add_collection(db, 'taobao_items', 'promo_items.json')
+    update_collection_from_json(db, 'products', 'data.json')
+    update_collection_from_json(db, 'taobao_items', 'promo_items.json')
 
 if __name__ == '__main__':
     main()
