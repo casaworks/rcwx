@@ -51,7 +51,8 @@ def decrypt_item_url(opener, encrypted_url):
     res = opener.open(req)
 
     url = res.geturl()
-    return url.replace('detail.tmall', 'item.taobao')
+    return url
+    #return url.replace('detail.tmall', 'item.taobao')
     
 def get_promotion_url(opener, item_id, item_type):
     item_url = 'http://item.taobao.com/item.htm?id=' + item_id
